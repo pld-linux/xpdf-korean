@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 The Xpdf language support packages include CMap files, text encodings,
 and various other configuration information necessary or useful for
-specific character sets. (They do not include any fonts.) 
+specific character sets. (They do not include any fonts.)
 This package provides support files needed to use the Xpdf tools with
 Korean PDF files.
 
