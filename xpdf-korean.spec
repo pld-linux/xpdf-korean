@@ -11,7 +11,6 @@ Requires:	xpdf
 Requires(post,preun):	grep
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 The Xpdf language support packages include CMap files, text encodings,
