@@ -11,7 +11,6 @@ Requires:	xpdf
 Requires(post,preun):	grep
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 The Xpdf language support packages include CMap files, text encodings,
 and various other configuration information necessary or useful for
@@ -42,21 +41,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 if [ ! -f /etc/xpdfrc ]; then
-	echo 'unicodeMap	ISO-2022-KR	/usr/X11R6/share/xpdf/ISO-2022-KR.unicodeMap' >> /etc/xpdfrc
-	echo 'cidToUnicode	Adobe-Korea1	/usr/X11R6/share/xpdf/Adobe-Korea1.cidToUnicode' >> /etc/xpdfrc
-	echo 'cMapDir		Adobe-Korea1	/usr/X11R6/share/xpdf/CMap-korean' >> /etc/xpdfrc
-	echo 'toUnicodeDir			/usr/X11R6/share/xpdf/CMap-korean' >> /etc/xpdfrc
+	echo 'unicodeMap	ISO-2022-KR	/usr/share/xpdf/ISO-2022-KR.unicodeMap' >> /etc/xpdfrc
+	echo 'cidToUnicode	Adobe-Korea1	/usr/share/xpdf/Adobe-Korea1.cidToUnicode' >> /etc/xpdfrc
+	echo 'cMapDir		Adobe-Korea1	/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
+	echo 'toUnicodeDir			/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
 	echo 'displayCIDFontX	Adobe-Korea1	"-*-mincho-medium-r-normal-*-%s-*-*-*-*-*-ksc5601.1987-0" ISO-2022-KR' >> /etc/xpdfrc
 else
- if ! grep -q /usr/X11R6/share/xpdf/ISO-2022-KR.unicodeMap /etc/xpdfrc; then
-	echo 'unicodeMap	ISO-2022-KR	/usr/X11R6/share/xpdf/ISO-2022-KR.unicodeMap' >> /etc/xpdfrc
+ if ! grep -q ISO-2022-KR.unicodeMap /etc/xpdfrc; then
+	echo 'unicodeMap	ISO-2022-KR	/usr/share/xpdf/ISO-2022-KR.unicodeMap' >> /etc/xpdfrc
  fi
- if ! grep -q /usr/X11R6/share/xpdf/Adobe-Korea1.cidToUnicode /etc/xpdfrc; then
-	echo 'cidToUnicode	Adobe-Korea1	/usr/X11R6/share/xpdf/Adobe-Korea1.cidToUnicode' >> /etc/xpdfrc
+ if ! grep -q Adobe-Korea1.cidToUnicode /etc/xpdfrc; then
+	echo 'cidToUnicode	Adobe-Korea1	/usr/share/xpdf/Adobe-Korea1.cidToUnicode' >> /etc/xpdfrc
  fi
- if ! grep -q /usr/X11R6/share/xpdf/CMap-korean /etc/xpdfrc; then
-	echo 'cMapDir		Adobe-Korea1	/usr/X11R6/share/xpdf/CMap-korean' >> /etc/xpdfrc
-	echo 'toUnicodeDir			/usr/X11R6/share/xpdf/CMap-korean' >> /etc/xpdfrc
+ if ! grep -q CMap-korean /etc/xpdfrc; then
+	echo 'cMapDir		Adobe-Korea1	/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
+	echo 'toUnicodeDir			/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
  fi
  if ! grep -q "-*-mincho-medium-r-normal-*-%s-*-*-*-*-*-ksc5601.1987-0" /etc/xpdfrc; then
 	echo 'displayCIDFontX	Adobe-Korea1	"-*-mincho-medium-r-normal-*-%s-*-*-*-*-*-ksc5601.1987-0" ISO-2022-KR' >> /etc/xpdfrc
@@ -64,9 +63,9 @@ else
 fi
 
 %preun
-grep -v /usr/X11R6/share/xpdf/ISO-2022-KR.unicodeMap /etc/xpdfrc > /etc/xpdfrc.new
-grep -v /usr/X11R6/share/xpdf/Adobe-Korea1.cidToUnicode /etc/xpdfrc.new > /etc/xpdfrc
-grep -v /usr/X11R6/share/xpdf/CMap-korean /etc/xpdfrc > /etc/xpdfrc.new
+grep -v ISO-2022-KR.unicodeMap /etc/xpdfrc > /etc/xpdfrc.new
+grep -v Adobe-Korea1.cidToUnicode /etc/xpdfrc.new > /etc/xpdfrc
+grep -v CMap-korean /etc/xpdfrc > /etc/xpdfrc.new
 grep -v "-*-mincho-medium-r-normal-*-%s-*-*-*-*-*-ksc5601.1987-0" /etc/xpdfrc.new > /etc/xpdfrc
 rm -f /etc/xpdfrc.new
 
