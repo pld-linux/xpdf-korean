@@ -2,7 +2,7 @@ Summary:	ISO-2022-KR (KSX1001) encoding support for xpdf
 Summary(pl):	Wsparcie kodowania ISO-2022-KR (KSX1001) dla xpdf
 Name:		xpdf-korean
 Version:	1.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.foolabs.com/pub/xpdf/%{name}.tar.gz
@@ -61,7 +61,7 @@ else
 	echo 'cMapDir		Adobe-Korea1	/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
 	echo 'toUnicodeDir			/usr/share/xpdf/CMap-korean' >> /etc/xpdfrc
  fi
- if ! grep -q '-\*-mincho-medium-r-normal-\*-%s-\*-\*-\*-\*-\*-ksc5601\.1987-0' /etc/xpdfrc; then
+ if ! grep -q -e '-\*-mincho-medium-r-normal-\*-%s-\*-\*-\*-\*-\*-ksc5601\.1987-0' /etc/xpdfrc; then
 	echo 'displayCIDFontX	Adobe-Korea1	"-*-mincho-medium-r-normal-*-%s-*-*-*-*-*-ksc5601.1987-0" ISO-2022-KR' >> /etc/xpdfrc
  fi
 fi
@@ -71,7 +71,7 @@ umask 022
 grep -v 'ISO-2022-KR\.unicodeMap' /etc/xpdfrc > /etc/xpdfrc.new
 grep -v 'Adobe-Korea1\.cidToUnicode' /etc/xpdfrc.new > /etc/xpdfrc
 grep -v 'CMap-korean' /etc/xpdfrc > /etc/xpdfrc.new
-grep -v '-\*-mincho-medium-r-normal-\*-%s-\*-\*-\*-\*-\*-ksc5601\.1987-0' /etc/xpdfrc.new > /etc/xpdfrc
+grep -v -e '-\*-mincho-medium-r-normal-\*-%s-\*-\*-\*-\*-\*-ksc5601\.1987-0' /etc/xpdfrc.new > /etc/xpdfrc
 rm -f /etc/xpdfrc.new
 
 %files
