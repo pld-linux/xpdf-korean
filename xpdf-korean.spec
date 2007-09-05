@@ -2,7 +2,7 @@ Summary:	ISO-2022-KR (KSX1001) encoding support for xpdf
 Summary(pl.UTF-8):	Wsparcie kodowania ISO-2022-KR (KSX1001) dla xpdf
 Name:		xpdf-korean
 Version:	1.0
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.foolabs.com/pub/xpdf/%{name}-2005-jul-07.tar.gz
